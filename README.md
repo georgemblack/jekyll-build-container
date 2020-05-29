@@ -7,7 +7,8 @@ With this container, my CI builds are sped up by ~6 minutes. My site's dependenc
 I use the following commands to build/push the image manually.
 
 ```
-cat ~/TOKEN.txt | docker login https://docker.pkg.github.com -u USERNAME --password-stdin
-docker build -t docker.pkg.github.com/georgemblack/jekyll-build-container/jekyll-build:1.0.0 .
-docker push docker.pkg.github.com/georgemblack/jekyll-build-container/jekyll-build:1.0.0
+gcloud config set project oceanblue-public-registry
+gcloud auth configure-docker
+docker build -t gcr.io/oceanblue-public-registry/jekyll-custom-build/jekyll-build:1.0.0 .
+docker push gcr.io/oceanblue-public-registry/jekyll-custom-build/jekyll-build:1.0.0
 ```
